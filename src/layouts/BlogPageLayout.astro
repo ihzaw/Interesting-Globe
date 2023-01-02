@@ -29,7 +29,7 @@ const { frontmatter } = Astro.props;
           <div class="w-full flex justify-center">
             <div class="flex flex-col">
               <div class="flex justify-center">{frontmatter?.author}</div>
-              <div class="text-black not-italic font-normal">
+              <div class="text-black not-italic font-normal text-xs">
                 {frontmatter?.authorJob}, <span
                   class="font-semibold text-gray-600 italic"
                   >{frontmatter.authorCompany}</span>
@@ -42,9 +42,9 @@ const { frontmatter } = Astro.props;
   </div>
 </section>
 
-<section class="pt-36">
+<section class="pt-40">
   <div class="p-8 flex justify-center">
-    <div class="w-3/4 max-w-3/4 p-8 text-sm">
+    <div class="w-3/4 max-w-3/4 px-32 text-sm">
       <slot />
     </div>
   </div>
