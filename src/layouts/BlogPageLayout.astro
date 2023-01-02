@@ -1,8 +1,5 @@
 ---
 import PostTitle from "../components/PostTitle.astro";
-import samplePic from "../assets/samplePic.jfif";
-// import sampleProfile from "../assets/sampleProfile.png";
-// import { Image, Picture } from "@astrojs/image/components";
 import ProfileCard from "../components/ProfileCard.astro";
 
 const { frontmatter } = Astro.props;
@@ -12,32 +9,45 @@ const { frontmatter } = Astro.props;
   <div id="title-container" class="p-8 flex justify-center bg-stone-700">
     <div class="w-3/4 max-w-3/4 p-8 relative">
       <div>
-        <PostTitle text={frontmatter.title} />
+        <div class="py-2 border-b-2">
+          <PostTitle text={frontmatter.title} />
+        </div>
         <div
-          class="w-full absolute -bottom-1/2 flex flex-col justify-center align-center left-0 px-8"
+          class="w-full absolute -bottom-1/2 flex flex-col justify-center align-center left-0 px-8 border-b-2 pb-4"
         >
           <img
             id="title-image"
-            src={samplePic}
+            src={frontmatter.samplePic}
             alt="samplePic"
             class="w-full object-cover rounded-lg"
           />
-          <ProfileCard author={frontmatter.author} authorJob={frontmatter.authorJob} authorCompany={frontmatter.authorCompany} />
+          <ProfileCard
+            author={frontmatter.author}
+            authorJob={frontmatter.authorJob}
+            authorCompany={frontmatter.authorCompany}
+          />
+        </div>
       </div>
-    </div>
     </div>
   </div>
 </section>
 
 <section class="pt-40">
   <div class="p-8 flex justify-center">
-    <div class="w-3/4 max-w-3/4 px-24 text-sm">
+    <div class="w-3/4 max-w-3/4 px-12 text-sm">
       <slot />
     </div>
   </div>
 </section>
 
+
 <style>
+  @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap");
+
+  section {
+    font-family: 'Montserrat', sans-serif;
+  }
+
   #title-container {
     height: 425px;
   }
