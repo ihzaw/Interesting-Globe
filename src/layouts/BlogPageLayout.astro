@@ -1,38 +1,43 @@
 ---
 import PostTitle from "../components/PostTitle.astro";
 import ProfileCard from "../components/ProfileCard.astro";
+import { Icon } from "astro-icon";
 
 const { frontmatter } = Astro.props;
 ---
 
 <section>
-  <div id="title-container" class="p-8 flex justify-center bg-stone-700">
+  <div id="title-container" class="p-8 flex justify-center">
     <div class="w-3/4 max-w-3/4 p-8 relative">
       <div>
-        <div class="py-2 border-b-2">
+        <div class="py-2">
           <PostTitle text={frontmatter.title} />
         </div>
         <div
-          class="w-full absolute -bottom-1/2 flex flex-col justify-center align-center left-0 px-8 border-b-2 pb-4"
+          class="w-full absolute -bottom-[70%] flex flex-col justify-center align-center left-0 px-8 border-b pb-4"
         >
           <img
             id="title-image"
             src={frontmatter.samplePic}
-            alt="samplePic"
+            alt={frontmatter.samplePic}
             class="w-full object-cover rounded-lg"
           />
           <ProfileCard
             author={frontmatter.author}
             authorJob={frontmatter.authorJob}
             authorCompany={frontmatter.authorCompany}
+            authorProfilePicture={frontmatter.authorProfilePicture}
           />
+          <div class="text-center mt-4 text-italic">
+            <p class="justify-self-center text-[0.6rem]">03 January 2023</p>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="pt-40">
+<section class="pt-52 mb-12">
   <div class="p-8 flex justify-center">
     <div class="w-3/4 max-w-3/4 px-12 text-sm">
       <slot />
@@ -40,12 +45,39 @@ const { frontmatter } = Astro.props;
   </div>
 </section>
 
+<section class="border-t-1 border-main p-2 flex">
+  <div class="w-full">
+    <div class="p-4 flex justify-center items-center align-middle h-full bg-slate-800">
+      <div class=" transition ease-in-out hover:scale-[1.2] duration-300 flex">
+        <Icon
+          name="fa-solid:dice-d20"
+          class="text-white cursor-pointer mr-4"
+          rotate="90deg"
+          width="75px"
+          height="75px"
+        />
+        <div class="font-bold text-neon flex justify-center items-center text-2xl">
+          Randomize
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<a
+  class="p-6 w-20 h-20 fixed bottom-5 right-5 rounded-full cursor-pointer hover:bg-slate-100 transition ease-out"
+  href="#"
+>
+  <Icon name="bytesize:chevron-top" />
+</a>
 
 <style>
   @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap");
 
   section {
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", sans-serif;
+    min-width: 450px;
+    color: black;
   }
 
   #title-container {
@@ -54,5 +86,17 @@ const { frontmatter } = Astro.props;
 
   #title-image {
     height: 300px;
+  }
+
+  :root {
+    scroll-behavior: smooth;
+  }
+
+  .text-neon {
+    background-color: #85ffbd;
+    background-image: linear-gradient(45deg, #85ffbd 0%, #fffb7d 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
   }
 </style>
