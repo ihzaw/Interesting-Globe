@@ -1,19 +1,20 @@
 ---
 import PostTitle from "../components/PostTitle.astro";
 import ProfileCard from "../components/ProfileCard.astro";
+import { Icon } from 'astro-icon'
 
 const { frontmatter } = Astro.props;
 ---
 
 <section>
-  <div id="title-container" class="p-8 flex justify-center bg-stone-700">
+  <div id="title-container" class="p-8 flex justify-center bg-main">
     <div class="w-3/4 max-w-3/4 p-8 relative">
       <div>
         <div class="py-2 border-b-2">
           <PostTitle text={frontmatter.title} />
         </div>
         <div
-          class="w-full absolute -bottom-1/2 flex flex-col justify-center align-center left-0 px-8 border-b-2 pb-4"
+          class="w-full absolute -bottom-[70%] flex flex-col justify-center align-center left-0 px-8 border-b-2 pb-4"
         >
           <img
             id="title-image"
@@ -25,14 +26,18 @@ const { frontmatter } = Astro.props;
             author={frontmatter.author}
             authorJob={frontmatter.authorJob}
             authorCompany={frontmatter.authorCompany}
+            authorProfilePicture={frontmatter.authorProfilePicture}
           />
+          <div class="text-center mt-4 text-italic">
+            <p class="justify-self-center text-[0.6rem]">03 January 2023</p>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="pt-40">
+<section class="pt-52">
   <div class="p-8 flex justify-center">
     <div class="w-3/4 max-w-3/4 px-12 text-sm">
       <slot />
@@ -40,19 +45,25 @@ const { frontmatter } = Astro.props;
   </div>
 </section>
 
+<a class="p-6 w-20 h-20 fixed bottom-5 right-5 rounded-full cursor-pointer hover:bg-slate-100" href="#">
+  <Icon name="bytesize:chevron-top"/>
+</a>
 
 <style>
   @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap");
 
   section {
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", sans-serif;
   }
 
   #title-container {
     height: 425px;
+    background: linear-gradient(90deg, #006064 0%, #009197 100%);
   }
 
   #title-image {
     height: 300px;
   }
+
+  :root{scroll-behavior:smooth;}
 </style>
