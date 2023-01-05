@@ -1,0 +1,16 @@
+---
+const { text } = Astro.props;
+---
+
+<div id="title" class="text-3xl text-slate-900 cursor-pointer font-bold">
+  {text}
+</div>
+
+<script is:inline define:vars={{ text, url: Astro.url }}>
+  const handleClick = (e) => {
+    navigator.clipboard.writeText(url);
+  };
+
+  const title = document.getElementById("title");
+  title.addEventListener("click", handleClick);
+</script>
