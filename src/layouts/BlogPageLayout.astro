@@ -4,6 +4,18 @@ import ProfileCard from "../components/ProfileCard.astro";
 import { Icon } from "astro-icon";
 
 const { frontmatter } = Astro.props;
+const url = `http://localhost:1337/api/articles/${frontmatter.articleId}?populate=articleCover`
+const token = "3c1ac2b3224c22d57a0a8ee5bd7914a412e53750c37d14a78a9725c4697a765a52c393522c5ed8664cb9da9ecfe0b29ad722ad9a8ab83b01b8749e56b33a1553f0c2305263e0a4df3f09eb2b8715c63082df1ca89dc4f1fc44449490a3823c478ace8a90fb8e237d80624281e8f185a7a9cbc9ce9214131db5623bd1e4bc485d"
+const config = {
+  headers: {
+      Authorization : `Bearer ${token}`
+    },
+}
+
+const response = await fetch(url, config)
+const value = await response.json()
+
+const { attributes: article } = value.data
 ---
 
 <section>
@@ -11,22 +23,22 @@ const { frontmatter } = Astro.props;
     <div class="w-3/4 max-w-3/4 p-8">
       <div>
         <div class="py-2 mb-8">
-          <PostTitle text={frontmatter.title} />
+          <PostTitle text={article.title} />
         </div>
         <div
           class="w-full flex flex-col justify-center align-center left-0 border-b pb-4"
         >
           <img
             id="title-image"
-            src={frontmatter.samplePic}
-            alt={frontmatter.samplePic}
+            src={`http://localhost:1337${article.articleCover.data.attributes.url}`}
+            alt={article.articleCover.data.attributes.name}
             class="w-full object-cover rounded-lg"
           />
           <ProfileCard
-            author={frontmatter.author}
-            authorJob={frontmatter.authorJob}
-            authorCompany={frontmatter.authorCompany}
-            authorProfilePicture={frontmatter.authorProfilePicture}
+            author={article.author}
+            authorJob={article.authorJob}
+            authorCompany={article.authorCompany}
+            authorProfilePicture={article.authorProfilePicture}
           />
           <div class="text-center mt-4 text-italic">
             <p class="justify-self-center text-[0.6rem]">03 January 2023</p>
