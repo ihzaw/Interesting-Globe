@@ -4,8 +4,8 @@ import ProfileCard from "../components/ProfileCard.astro";
 import { Icon } from "astro-icon";
 
 const { frontmatter } = Astro.props;
-const url = `http://localhost:1337/api/articles/${frontmatter.articleId}?populate=articleCover`
-const token = "3c1ac2b3224c22d57a0a8ee5bd7914a412e53750c37d14a78a9725c4697a765a52c393522c5ed8664cb9da9ecfe0b29ad722ad9a8ab83b01b8749e56b33a1553f0c2305263e0a4df3f09eb2b8715c63082df1ca89dc4f1fc44449490a3823c478ace8a90fb8e237d80624281e8f185a7a9cbc9ce9214131db5623bd1e4bc485d"
+const url = `${import.meta.env.DEV_URL}/api/articles/${frontmatter.articleId}?populate=cover`
+const token = import.meta.env.DEV_TOKEN
 const config = {
   headers: {
       Authorization : `Bearer ${token}`
@@ -14,8 +14,8 @@ const config = {
 
 const response = await fetch(url, config)
 const value = await response.json()
-
-const { attributes: article } = value.data
+const { attributes: article } = value?.data
+console.log(article)
 ---
 
 <section>
@@ -30,8 +30,8 @@ const { attributes: article } = value.data
         >
           <img
             id="title-image"
-            src={`http://localhost:1337${article.articleCover.data.attributes.url}`}
-            alt={article.articleCover.data.attributes.name}
+            src={`${import.meta.env.DEV_URL}${article.cover.data.attributes.url}`}
+            alt={article.cover.data.attributes.name}
             class="w-full object-cover rounded-lg"
           />
           <ProfileCard
@@ -68,8 +68,8 @@ const { attributes: article } = value.data
           width="50px"
           height="50px"
         />
-        <div class="font-bold text-white flex justify-center items-center text-xl">
-          Randomize
+        <div class="cursor-default font-bold text-white flex justify-center items-center text-xl">
+          Next article
         </div>
       </div>
     </div>
