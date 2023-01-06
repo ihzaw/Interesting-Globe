@@ -1,6 +1,9 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Card from "../components/Card.astro";
+import Layout from '../layouts/Layout.astro';
+import Card from '../components/Card.astro';
+import Button from '../components/reusable/Button';
+import Hyperlink from '../components/reusable/Hyperlink'
+
 ---
 
 <Layout title="Interesting Globe">
@@ -32,7 +35,7 @@ import Card from "../components/Card.astro";
         title="Community"
         body="Come say hi to our amazing Discord community. ❤️"
       />
-      <a href="/art/1" class="font-bold bg-red-500">to sample art</a>
+      <Hyperlink label="to sample art" to="/art/1" client:visible />
     </ul>
   </main>
 </Layout>
