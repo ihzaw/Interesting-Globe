@@ -1,12 +1,8 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
-import Button from '../components/reusable/Button';
-import Hyperlink from '../components/reusable/Hyperlink'
-
+import { Icon } from "astro-icon";
 ---
 
-<Layout title="Interesting Globe">
+<!-- <Layout title="Interesting Globe">
   <main>
     <h1>Welcome to <span class="text-gradient">Astro</span></h1>
     <p class="instructions">
@@ -38,9 +34,51 @@ import Hyperlink from '../components/reusable/Hyperlink'
       <Hyperlink label="to sample art" to="/art/1" client:visible />
     </ul>
   </main>
-</Layout>
+</Layout> -->
+<section class="h-screen bg-[#C3BAA9] font-serif grid grid-cols-2 p-8">
+  <div class="grid grid-rows-2">
+    <div class="flex flex-col justify-between">
+      <div class="grid grid-cols-2 grid-rows-2 h-full">
+        <div class="font-bold text-6xl hover:bg-black hover:text-white cursor-pointer transition ease-in-out duration-150">
+          <div>START</div>
+          <div>HERE</div>
+        </div>
+        <!-- <div class="flex justify-end items-end">
+          <p>our articles of the day</p>
+        </div> -->
+      </div>
+      <div class="text-2xl font-bold flex justify-center hover:underline">OR</div>
+    </div>
+    <div class="grid grid-cols-2 grid-rows-2">
+      <div class="col-start-2 row-start-2 font-bold text-6xl align-bottom">
+        <!-- <div>
+          <Icon
+            id="randomize-button"
+            name="fa-solid:dice-d20"
+            class="text-white cursor-pointer mr-4 transition ease-in-out hover:scale-[1.2] duration-300"
+            rotate="90deg"
+            width="50px"
+            height="50px"
+          />
+        </div> -->
+        <div class="h-full flex flex-col justify-end hover:bg-black hover:text-white cursor-pointer transition ease-in-out duration-150">
+          <div class="flex justify-end">START</div>
+          <div class="flex justify-end">RANDOM</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>kanan</div>
+</section>
 
 <style>
+  @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap");
+
+  section > div {
+    font-family: "Montserrat", sans-serif;
+    min-width: 450px;
+    color: black;
+  }
   main {
     margin: auto;
     padding: 1.5rem;
