@@ -1,5 +1,6 @@
 ---
 import { Icon } from "astro-icon";
+const url = "https://wallpaperaccess.com/full/1196652.jpg";
 ---
 
 <!-- <Layout title="Interesting Globe">
@@ -35,7 +36,9 @@ import { Icon } from "astro-icon";
     </ul>
   </main>
 </Layout> -->
-<section class="h-screen bg-[#C3BAA9] font-serif grid grid-cols-2 p-8">
+<section
+  class="h-screen bg-[#C3BAA9] font-serif grid md:grid-cols-1 lg:grid-cols-2 p-8 gap-4"
+>
   <div class="grid grid-rows-2 mr-4">
     <div class="flex flex-col justify-between">
       <div class="grid grid-cols-2 grid-rows-2 h-full">
@@ -46,7 +49,9 @@ import { Icon } from "astro-icon";
           <div>HERE</div>
         </div>
         <div class="flex justify-end items-start mt-1">
-          <p>our articles of the day</p>
+          <p class="align-middle">
+            our articles of the day <span>&gtdot;</span>
+          </p>
         </div>
       </div>
       <div class="text-2xl font-bold flex justify-center hover:underline">
@@ -56,13 +61,13 @@ import { Icon } from "astro-icon";
     <div class="grid grid-cols-2 grid-rows-2">
       <div class="col-start-2 row-start-2 font-bold text-6xl align-bottom">
         <div
-        class="h-full flex flex-col justify-end hover:bg-black hover:text-white cursor-pointer transition ease-in-out duration-150"
+          class="h-full flex flex-col justify-end hover:bg-black hover:text-white cursor-pointer transition ease-in-out duration-150"
         >
-        <div class="flex justify-end">
+          <div class="flex justify-end items-center">
             <Icon
               id="randomize-button"
               name="fa-solid:dice-d20"
-              class="text-white cursor-pointer mr-4 transition ease-in-out hover:scale-[1.2] duration-300"
+              class="text-[#C3BAA9] hover:text-white cursor-pointer transition ease-in-out hover:scale-[1.2] duration-300 mr-4"
               rotate="90deg"
               width="50px"
               height="50px"
@@ -74,10 +79,70 @@ import { Icon } from "astro-icon";
       </div>
     </div>
   </div>
-  <div class="p-8">
-    <div
-      class="h-full w-full bg-gray-700 rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-40"
-    >
+  <div class="px-4">
+    <div class="h-full w-full grid grid-cols-2 gap-2">
+      <div
+        class="p-4 bg-gray-200 rounded-lg bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-40"
+      >
+        <div class="rounded-xl">
+          <img
+            src={url}
+            alt="sampleImage.jpg"
+            class="rounded-md object-cover"
+          />
+        </div>
+        <div class="flex flex-col max-h-28">
+          <div class="py-1 font-bold text-lg">Title</div>
+          <div class="py-1 text-xs text-ellipsis">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+          </div>
+        </div>
+      </div>
+      <div
+        class="p-4 bg-gray-200 rounded-lg bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-40"
+      >
+        <div class="rounded-xl">
+          <img
+            src={url}
+            alt="sampleImage.jpg"
+            class="rounded-md object-cover"
+          />
+        </div>
+        <div class="flex flex-col max-h-28">
+          <div class="py-1 font-bold text-lg">Title</div>
+          <div class="py-1 text-xs text-ellipsis">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+          </div>
+        </div>
+      </div>
+      <div class="col-span-2 flex justify-center">
+        <div
+          class="p-4 bg-gray-200 rounded-lg bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-40 w-1/2"
+        >
+          <div class="rounded-xl">
+            <img
+              src={url}
+              alt="sampleImage.jpg"
+              class="rounded-md object-cover"
+            />
+          </div>
+          <div class="flex flex-col max-h-28">
+            <div class="py-1 font-bold text-lg">Title</div>
+            <div class="py-1 text-xs text-ellipsis">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
