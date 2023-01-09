@@ -1,6 +1,9 @@
 ---
 import { Icon } from "astro-icon";
-const url = "https://wallpaperaccess.com/full/1196652.jpg";
+import api from "../configs/api";
+import ArticleCard from "../components/reusable/ArticleCard";
+
+const selectedArticles = await api.getSelectedArticles();
 ---
 
 <!-- <Layout title="Interesting Globe">
@@ -41,17 +44,17 @@ const url = "https://wallpaperaccess.com/full/1196652.jpg";
 >
   <div class="grid grid-rows-2 mr-4">
     <div class="flex flex-col justify-between">
-      <div class="grid grid-cols-2 grid-rows-2 h-full">
+      <div class="grid grid-cols-3 grid-rows-2 h-full">
         <div
-          class="font-bold text-6xl hover:bg-black hover:text-white cursor-pointer transition ease-in-out duration-150"
+          class="col-start-3 col-span-2 font-bold text-6xl hover:bg-black hover:text-white cursor-pointer transition ease-in-out duration-150"
         >
-          <div>START</div>
-          <div>HERE</div>
-        </div>
-        <div class="flex justify-end items-start mt-1">
-          <p class="align-middle">
-            our articles of the day <span>&gtdot;</span>
-          </p>
+          <div class="flex justify-end">START</div>
+          <div class="flex justify-end items-end">
+            HERE
+            <span class="text-xs font-normal mb-1"
+              >your random reads <span>&gtdot;</span>
+            </span>
+          </div>
         </div>
       </div>
       <div class="text-2xl font-bold flex justify-center hover:underline">
@@ -79,71 +82,16 @@ const url = "https://wallpaperaccess.com/full/1196652.jpg";
       </div>
     </div>
   </div>
-  <div class="px-4">
-    <div class="h-full w-full grid grid-cols-2 gap-2">
-      <div
-        class="p-4 bg-gray-200 rounded-lg bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-40"
-      >
-        <div class="rounded-xl">
-          <img
-            src={url}
-            alt="sampleImage.jpg"
-            class="rounded-md object-cover"
-          />
-        </div>
-        <div class="flex flex-col max-h-28">
-          <div class="py-1 font-bold text-lg">Title</div>
-          <div class="py-1 text-xs text-ellipsis">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
+  <div class="px-4 pb-4 flex flex-col justify-between w-full h-3/4">
+    {
+      selectedArticles.map((article) => {
+        return (
+          <div class="h-28">
+            <ArticleCard article={article} />
           </div>
-        </div>
-      </div>
-      <div
-        class="p-4 bg-gray-200 rounded-lg bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-40"
-      >
-        <div class="rounded-xl">
-          <img
-            src={url}
-            alt="sampleImage.jpg"
-            class="rounded-md object-cover"
-          />
-        </div>
-        <div class="flex flex-col max-h-28">
-          <div class="py-1 font-bold text-lg">Title</div>
-          <div class="py-1 text-xs text-ellipsis">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-          </div>
-        </div>
-      </div>
-      <div class="col-span-2 flex justify-center">
-        <div
-          class="p-4 bg-gray-200 rounded-lg bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-40 w-1/2"
-        >
-          <div class="rounded-xl">
-            <img
-              src={url}
-              alt="sampleImage.jpg"
-              class="rounded-md object-cover"
-            />
-          </div>
-          <div class="flex flex-col max-h-28">
-            <div class="py-1 font-bold text-lg">Title</div>
-            <div class="py-1 text-xs text-ellipsis">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+        );
+      })
+    }
   </div>
 </section>
 
